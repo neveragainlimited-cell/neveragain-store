@@ -6,6 +6,17 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { useCart } from '@/components/providers/CartProvider'
 import CartDrawer from '@/components/layout/CartDrawer'
 
+const tickerItems = [
+  '★★★★★  200+ five-star reviews',
+  '🚚  Free UK delivery over £20',
+  '💊  20 servings per product',
+  '🛡️  30-day money-back guarantee',
+  '✓  Vegan & gluten-free',
+  '⚡  The pre/post drinking protocol',
+  '🔬  Science-backed formula',
+  '🇬🇧  UK brand',
+]
+
 export default function Navbar() {
   const { totalItems, toggleCart } = useCart()
   const [scrolled, setScrolled] = useState(false)
@@ -16,52 +27,70 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
+  // Duplicate for seamless loop
+  const allItems = [...tickerItems, ...tickerItems]
+
   return (
     <>
-      <motion.nav
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          scrolled ? 'bg-dark/95 backdrop-blur-md shadow-lg' : 'bg-transparent'
-        }`}
-        initial={{ y: -80 }}
-        animate={{ y: 0 }}
-        transition={{ duration: 0.4, ease: 'easeOut' }}
-      >
-        <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-          {/* Logo */}
-          <Link href="/" className="font-bebas text-3xl text-white tracking-wide hover:text-yellow transition-colors duration-200">
-            NEVER AGAIN
-          </Link>
-
-          {/* Nav links — desktop */}
-          <div className="hidden md:flex items-center gap-8">
-            <NavLink href="#how-it-works">How It Works</NavLink>
-            <NavLink href="#products">Products</NavLink>
-            <NavLink href="#bundle">Bundle</NavLink>
+      <div className="fixed top-0 left-0 right-0 z-50">
+        {/* Ticker strip */}
+        <div className="bg-magenta overflow-hidden h-8 flex items-center">
+          <div className="flex gap-0 animate-marquee-fast whitespace-nowrap">
+            {allItems.map((item, i) => (
+              <span key={i} className="font-poppins font-semibold text-white text-xs shrink-0 px-6">
+                {item}
+                <span className="ml-6 text-white/40">·</span>
+              </span>
+            ))}
           </div>
-
-          {/* Cart button */}
-          <button
-            onClick={toggleCart}
-            className="relative flex items-center gap-2 text-white hover:text-yellow transition-colors duration-200"
-            aria-label="Open cart"
-          >
-            <CartIcon />
-            <AnimatePresence>
-              {totalItems > 0 && (
-                <motion.span
-                  key="badge"
-                  initial={{ scale: 0 }}
-                  animate={{ scale: 1 }}
-                  exit={{ scale: 0 }}
-                  className="absolute -top-2 -right-2 bg-magenta text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center"
-                >
-                  {totalItems}
-                </motion.span>
-              )}
-            </AnimatePresence>
-          </button>
         </div>
-      </motion.nav>
+
+        {/* Main navbar */}
+        <motion.nav
+          className={`transition-all duration-300 ${
+            scrolled ? 'bg-dark/95 backdrop-blur-md shadow-lg' : 'bg-transparent'
+          }`}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.4 }}
+        >
+          <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+            {/* Logo */}
+            <Link href="/" className="font-bebas text-3xl text-white tracking-wide hover:text-yellow transition-colors duration-200">
+              NEVER AGAIN
+            </Link>
+
+            {/* Nav links — desktop */}
+            <div className="hidden md:flex items-center gap-8">
+              <NavLink href="#how-it-works">How It Works</NavLink>
+              <NavLink href="#products">Products</NavLink>
+              <NavLink href="#bundle">Bundle</NavLink>
+            </div>
+
+            {/* Cart button */}
+            <button
+              onClick={toggleCart}
+              className="relative flex items-center gap-2 text-white hover:text-yellow transition-colors duration-200"
+              aria-label="Open cart"
+            >
+              <CartIcon />
+              <AnimatePresence>
+                {totalItems > 0 && (
+                  <motion.span
+                    key="badge"
+                    initial={{ scale: 0 }}
+                    animate={{ scale: 1 }}
+                    exit={{ scale: 0 }}
+                    className="absolute -top-2 -right-2 bg-magenta text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center"
+                  >
+                    {totalItems}
+                  </motion.span>
+                )}
+              </AnimatePresence>
+            </button>
+          </div>
+        </motion.nav>
+      </div>
 
       <CartDrawer />
     </>

@@ -54,6 +54,17 @@ body {
   100% { background-position: 80px 80px, 80px 100px, 100px 60px, 60px 80px; }
 }
 
+/* Marquee animations — for review carousel and ticker */
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes marquee-reverse {
+  0% { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
+}
+
 /* Smooth scrollbar */
 ::-webkit-scrollbar {
   width: 6px;

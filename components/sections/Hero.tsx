@@ -51,6 +51,22 @@ export default function Hero() {
               <span className="text-white/50 text-base">Shield before. Rescue after. Zero write-offs.</span>
             </motion.p>
 
+            {/* Star rating trust signal */}
+            <motion.div
+              className="flex items-center gap-3 mb-6"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.45, duration: 0.5 }}
+            >
+              <div className="flex gap-0.5">
+                {[...Array(5)].map((_, i) => (
+                  <span key={i} className="text-yellow text-lg leading-none">★</span>
+                ))}
+              </div>
+              <span className="font-poppins font-bold text-white text-sm">4.7</span>
+              <span className="font-poppins text-white/40 text-sm">· 200+ verified reviews</span>
+            </motion.div>
+
             <motion.div
               className="flex flex-wrap gap-4"
               initial={{ opacity: 0, y: 20 }}
@@ -76,9 +92,9 @@ export default function Hero() {
               </motion.a>
             </motion.div>
 
-            {/* Trust signals */}
+            {/* Trust badges */}
             <motion.div
-              className="flex flex-wrap gap-6 mt-10"
+              className="flex flex-wrap gap-6 mt-8"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.7, duration: 0.5 }}

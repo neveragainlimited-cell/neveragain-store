@@ -23,6 +23,9 @@ module.exports = {
         'float-delayed': 'float 6s ease-in-out 3s infinite',
         'pulse-slow': 'pulse 3s ease-in-out infinite',
         'checker-slide': 'checker-slide 20s linear infinite',
+        'marquee': 'marquee 28s linear infinite',
+        'marquee-reverse': 'marquee-reverse 28s linear infinite',
+        'marquee-fast': 'marquee 18s linear infinite',
       },
       keyframes: {
         float: {

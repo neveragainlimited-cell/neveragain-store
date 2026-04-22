@@ -24,7 +24,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Never Again — The Complete Hangover System',
     description: 'Shield before. Rescue after. Science-backed hangover support that actually works.',
-    url: 'https://neveragainstore.co.uk',
+    url: 'https://www.neveragainstore.com',
     siteName: 'Never Again',
     locale: 'en_GB',
     type: 'website',
