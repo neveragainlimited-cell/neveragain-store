@@ -13,7 +13,7 @@ export default function Hero() {
       {/* Animated checkerboard background */}
       <div className="absolute inset-0 checker-bg opacity-100" />
 
-      {/* Gradient overlay — fades checker into solid at bottom */}
+      {/* Gradient overlay */}
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-dark/40 to-dark" />
 
       <div className="relative z-10 max-w-6xl mx-auto px-6 pt-24 pb-16 w-full">
@@ -22,7 +22,7 @@ export default function Hero() {
           {/* Text side */}
           <div>
             <motion.p
-              className="font-poppins font-semibold text-yellow text-sm uppercase tracking-[0.2em] mb-4"
+              className="font-poppins font-semibold text-yellow text-sm uppercase tracking-[0.2em] mb-6"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1, duration: 0.5 }}
@@ -30,18 +30,38 @@ export default function Hero() {
               The pre/post drinking protocol
             </motion.p>
 
-            <motion.h1
-              className="font-bebas text-[clamp(5rem,12vw,9rem)] leading-[0.9] text-white mb-6"
+            {/* Animated logo — colour cycles through brand colours */}
+            <motion.div
+              className="mb-6"
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2, duration: 0.6, ease: 'easeOut' }}
             >
-              NEVER<br />
-              <span className="text-magenta">AGAIN</span>
-            </motion.h1>
+              <div
+                className="relative w-[min(380px,85vw)] h-[min(190px,42vw)]"
+                style={{ animation: 'logoDrip 8s ease-in-out infinite' }}
+              >
+                {/* CSS mask trick: logo shape filled with animated colour */}
+                <div
+                  className="absolute inset-0"
+                  style={{
+                    WebkitMaskImage: 'url(/images/logo.png)',
+                    WebkitMaskSize: 'contain',
+                    WebkitMaskRepeat: 'no-repeat',
+                    WebkitMaskPosition: 'left center',
+                    maskImage: 'url(/images/logo.png)',
+                    maskSize: 'contain',
+                    maskRepeat: 'no-repeat',
+                    maskPosition: 'left center',
+                    animation: 'logoCycle 6s ease-in-out infinite',
+                    backgroundColor: '#e02180',
+                  }}
+                />
+              </div>
+            </motion.div>
 
             <motion.p
-              className="font-poppins text-white/70 text-xl leading-relaxed mb-8 max-w-md"
+              className="font-poppins text-white/70 text-xl leading-relaxed mb-6 max-w-md"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.35, duration: 0.5 }}
@@ -51,7 +71,7 @@ export default function Hero() {
               <span className="text-white/50 text-base">Shield before. Rescue after. Zero write-offs.</span>
             </motion.p>
 
-            {/* Star rating trust signal */}
+            {/* Star rating */}
             <motion.div
               className="flex items-center gap-3 mb-6"
               initial={{ opacity: 0, y: 20 }}

@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useCart } from '@/components/providers/CartProvider'
 import CartDrawer from '@/components/layout/CartDrawer'
@@ -56,8 +57,21 @@ export default function Navbar() {
         >
           <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
             {/* Logo */}
-            <Link href="/" className="font-bebas text-3xl text-white tracking-wide hover:text-yellow transition-colors duration-200">
-              NEVER AGAIN
+            <Link href="/" className="flex items-center hover:opacity-80 transition-opacity duration-200">
+              <div
+                className="relative w-24 h-12"
+                style={{
+                  WebkitMaskImage: 'url(/images/logo.png)',
+                  WebkitMaskSize: 'contain',
+                  WebkitMaskRepeat: 'no-repeat',
+                  WebkitMaskPosition: 'left center',
+                  maskImage: 'url(/images/logo.png)',
+                  maskSize: 'contain',
+                  maskRepeat: 'no-repeat',
+                  maskPosition: 'left center',
+                  backgroundColor: '#ffffff',
+                }}
+              />
             </Link>
 
             {/* Nav links — desktop */}

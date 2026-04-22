@@ -54,6 +54,27 @@ body {
   100% { background-position: 80px 80px, 80px 100px, 100px 60px, 60px 80px; }
 }
 
+/* Logo colour cycling — cycles through brand colours: magenta → blue → yellow */
+@keyframes logoCycle {
+  0%   { background-color: #e02180; }  /* magenta */
+  30%  { background-color: #e02180; }
+  40%  { background-color: #2570b3; }  /* blue */
+  65%  { background-color: #2570b3; }
+  75%  { background-color: #e4e238; }  /* yellow */
+  90%  { background-color: #e4e238; }
+  100% { background-color: #e02180; }  /* back to magenta */
+}
+
+/* Logo drip — subtle vertical morph that feels like the letters are melting */
+@keyframes logoDrip {
+  0%   { transform: scaleY(1)    scaleX(1)    translateY(0px); }
+  20%  { transform: scaleY(1.02) scaleX(0.99) translateY(2px); }
+  40%  { transform: scaleY(0.98) scaleX(1.01) translateY(-1px); }
+  60%  { transform: scaleY(1.03) scaleX(0.98) translateY(3px); }
+  80%  { transform: scaleY(0.99) scaleX(1.01) translateY(-2px); }
+  100% { transform: scaleY(1)    scaleX(1)    translateY(0px); }
+}
+
 /* Marquee animations — for review carousel and ticker */
 @keyframes marquee {
   0% { transform: translateX(0); }
