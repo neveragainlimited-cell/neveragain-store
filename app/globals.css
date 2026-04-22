@@ -1,0 +1,88 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --magenta: #e02180;
+  --blue: #2570b3;
+  --yellow: #e4e238;
+  --olive: #c7d670;
+  --dark: #0f0f0f;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: #fff;
+  color: #0f0f0f;
+  font-family: var(--font-poppins), sans-serif;
+  overflow-x: hidden;
+}
+
+/* Checkerboard pattern — matches the product packaging */
+.checker-bg {
+  background-image:
+    linear-gradient(45deg, rgba(255,255,255,0.06) 25%, transparent 25%),
+    linear-gradient(-45deg, rgba(255,255,255,0.06) 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, rgba(255,255,255,0.06) 75%),
+    linear-gradient(-45deg, transparent 75%, rgba(255,255,255,0.06) 75%);
+  background-size: 40px 40px;
+  background-position: 0 0, 0 20px, 20px -20px, -20px 0px;
+  animation: checker-slide 20s linear infinite;
+}
+
+.checker-bg-yellow {
+  background-image:
+    linear-gradient(45deg, rgba(36,36,0,0.08) 25%, transparent 25%),
+    linear-gradient(-45deg, rgba(36,36,0,0.08) 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, rgba(36,36,0,0.08) 75%),
+    linear-gradient(-45deg, transparent 75%, rgba(36,36,0,0.08) 75%);
+  background-size: 40px 40px;
+  background-position: 0 0, 0 20px, 20px -20px, -20px 0px;
+}
+
+@keyframes checker-slide {
+  0% { background-position: 0 0, 0 20px, 20px -20px, -20px 0px; }
+  100% { background-position: 80px 80px, 80px 100px, 100px 60px, 60px 80px; }
+}
+
+/* Smooth scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #0f0f0f;
+}
+::-webkit-scrollbar-thumb {
+  background: #e02180;
+  border-radius: 3px;
+}
+
+/* Button base */
+.btn {
+  @apply inline-flex items-center justify-center font-poppins font-bold rounded-full px-8 py-4 text-base transition-all duration-200 cursor-pointer select-none;
+}
+
+.btn-magenta {
+  @apply btn bg-magenta text-white hover:brightness-110 active:scale-95;
+}
+
+.btn-outline-white {
+  @apply btn border-2 border-white text-white hover:bg-white hover:text-dark active:scale-95;
+}
+
+.btn-dark {
+  @apply btn bg-dark text-white hover:bg-gray-800 active:scale-95;
+}
+
+.btn-yellow {
+  @apply btn bg-yellow text-dark hover:brightness-105 active:scale-95;
+}
