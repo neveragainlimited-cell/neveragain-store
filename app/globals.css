@@ -54,6 +54,26 @@ body {
   100% { background-position: 120px 120px, 120px 150px, 150px 90px, 90px 120px; }
 }
 
+/* Logo mask — responsive: stretch full-width on mobile, contain on desktop */
+.logo-mask {
+  -webkit-mask-image: url('/images/logo.png');
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-size: 100% 100%;
+  -webkit-mask-position: center;
+  mask-image: url('/images/logo.png');
+  mask-repeat: no-repeat;
+  mask-size: 100% 100%;
+  mask-position: center;
+}
+@media (min-width: 1024px) {
+  .logo-mask {
+    -webkit-mask-size: contain;
+    -webkit-mask-position: left center;
+    mask-size: contain;
+    mask-position: left center;
+  }
+}
+
 /* Logo colour cycling — cycles through brand colours: magenta → blue → yellow */
 @keyframes logoCycle {
   0%   { background-color: #e02180; }  /* magenta */

@@ -39,21 +39,15 @@ export default function Hero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2, duration: 0.6, ease: 'easeOut' }}
             >
+              {/* Mobile: 55vw tall so logo fills full width without clipping
+                  Desktop: fixed height with contain so it left-aligns in column */}
               <div
-                className="relative w-full h-[min(280px,48vw)] lg:h-[min(340px,28vw)]"
+                className="relative w-full h-[55vw] lg:h-[min(340px,28vw)]"
                 style={{ animation: 'logoDrip 8s ease-in-out infinite' }}
               >
                 <div
-                  className="absolute inset-0"
+                  className="logo-mask absolute inset-0"
                   style={{
-                    WebkitMaskImage: 'url(/images/logo.png)',
-                    WebkitMaskSize: 'contain',
-                    WebkitMaskRepeat: 'no-repeat',
-                    WebkitMaskPosition: 'left center',
-                    maskImage: 'url(/images/logo.png)',
-                    maskSize: 'contain',
-                    maskRepeat: 'no-repeat',
-                    maskPosition: 'left center',
                     animation: 'logoCycle 6s ease-in-out infinite',
                     backgroundColor: '#e02180',
                   }}
