@@ -38,7 +38,7 @@ export default function Hero() {
               transition={{ delay: 0.2, duration: 0.6, ease: 'easeOut' }}
             >
               <div
-                className="relative w-[min(380px,85vw)] h-[min(190px,42vw)]"
+                className="relative w-[min(560px,92vw)] h-[min(280px,46vw)]"
                 style={{ animation: 'logoDrip 8s ease-in-out infinite' }}
               >
                 {/* CSS mask trick: logo shape filled with animated colour */}

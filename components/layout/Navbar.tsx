@@ -59,7 +59,7 @@ export default function Navbar() {
             {/* Logo */}
             <Link href="/" className="flex items-center hover:opacity-80 transition-opacity duration-200">
               <div
-                className="relative w-24 h-12"
+                className="relative w-36 h-[52px]"
                 style={{
                   WebkitMaskImage: 'url(/images/logo.png)',
                   WebkitMaskSize: 'contain',
