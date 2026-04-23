@@ -5,14 +5,21 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
   apiVersion: '2023-10-16',
 })
 
+// Server-side price ID map — client components can't read non-NEXT_PUBLIC_ env vars
+const PRICE_MAP: Record<string, string | undefined> = {
+  shield: process.env.STRIPE_SHIELD_PRICE_ID,
+  rescue: process.env.STRIPE_RESCUE_PRICE_ID,
+  bundle: process.env.STRIPE_BUNDLE_PRICE_ID,
+}
+
 export async function POST(req: NextRequest) {
   try {
     const { items, email, coupon } = await req.json()
     const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'
 
-    // Build line items for Stripe
-    const lineItems = items.map((item: { stripePriceId: string; quantity: number }) => ({
-      price: item.stripePriceId,
+    // Build line items — use server-side price map, fall back to client-supplied ID
+    const lineItems = items.map((item: { id: string; stripePriceId: string; quantity: number }) => ({
+      price: PRICE_MAP[item.id] || item.stripePriceId,
       quantity: item.quantity,
     }))
 
