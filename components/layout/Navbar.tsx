@@ -55,11 +55,11 @@ export default function Navbar() {
           animate={{ opacity: 1 }}
           transition={{ duration: 0.4 }}
         >
-          <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+          <div className="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
             {/* Logo */}
             <Link href="/" className="flex items-center hover:opacity-80 transition-opacity duration-200">
               <div
-                className="relative w-36 h-[52px]"
+                className="relative w-64 h-[72px]"
                 style={{
                   WebkitMaskImage: 'url(/images/logo.png)',
                   WebkitMaskSize: 'contain',

@@ -16,7 +16,7 @@ export default function Hero() {
       {/* Gradient overlay */}
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-dark/40 to-dark" />
 
-      <div className="relative z-10 max-w-6xl mx-auto px-6 pt-24 pb-16 w-full">
+      <div className="relative z-10 max-w-6xl mx-auto px-6 pt-32 pb-16 w-full">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
 
           {/* Text side */}
@@ -38,7 +38,7 @@ export default function Hero() {
               transition={{ delay: 0.2, duration: 0.6, ease: 'easeOut' }}
             >
               <div
-                className="relative w-[min(560px,92vw)] h-[min(280px,46vw)]"
+                className="relative w-full h-[min(360px,52vw)]"
                 style={{ animation: 'logoDrip 8s ease-in-out infinite' }}
               >
                 {/* CSS mask trick: logo shape filled with animated colour */}
